@@ -1,0 +1,5 @@
+.vs/
+realmikefacts-dynamo-endpoint/obj
+realmikefacts-dynamo-endpoint/bin
+realmikefacts-dynamo-endpoint.Tests/obj
+realmikefacts-dynamo-endpoint.Tests/bin
