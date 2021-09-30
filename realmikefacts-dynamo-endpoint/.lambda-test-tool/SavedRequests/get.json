@@ -1,0 +1,66 @@
+{
+    "version": "2.0",
+    "routeKey": "GET /tweets",
+    "rawPath": "/tweets",
+    "rawQueryString": "",
+    "headers": {
+        "accept": "*/*",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9",
+        "authorization": "Bearer eyJraWQiOiJDSXVIMlFFQmJKU1hXdkdPN1JydGhTS1hTT0VWMGhpd1RkVHlGV3RLTWtrPSIsImFsZyI6IlJTMjU2In0.eyJhdF9oYXNoIjoidWwtRDY1dEdYazFGT3UyLWppX1BOdyIsInN1YiI6Ijg1MGM2MDc2LWU2MGEtNGFkZi05MjJmLTE5NTZkZjE2MDFiOSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0yLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMl9qc0JpQTJPZXUiLCJjb2duaXRvOnVzZXJuYW1lIjoiYm9iYnlsaXRlIiwiYXVkIjoiMzdwMHJzbzV1MTlsaGlpMTVtN20xbHM0bmUiLCJldmVudF9pZCI6ImI4NTZjZjdiLTFhNjItNDkzZC04YWYxLTAyMDhlZTY5OTk4ZCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMyNzgyNDAwLCJleHAiOjE2MzI3ODYwMDAsImlhdCI6MTYzMjc4MjQwMSwianRpIjoiN2RkODBmZDItZTE2Yi00MzZlLTg2OTYtNWFiNDgzMTYwZjBhIiwiZW1haWwiOiJib2JieS5sdWlzaUBnbWFpbC5jb20ifQ.W6uBDBEZ4y-UbALTFqC8FvW7ASPUbV9Jb_Ssfmomn0YSP1YGLrq4eCncADvFu_SW9Yajyqb_AWMlCmqvQ0Jinzo9IdDgpxoPzWP4vuwKcS2GJCGMSbHUefqhFl2TEkqkJmu-CR4IzNdhLJD3O6ReEcCUasTbDEaq4I_mP5CT039rr7GJZYwthpDdKcJoTKjUKX3RTgzX6AiocOH9GhX5G-srk8D9zIvtf3C0wf4EvbxhHNr5bM3oyAuzqu_RxBXuBaEWM2HoRiyOroxipmSqFjz0QHoHjJQQil2BfbMUse0Lb_SZ-9ZXvC8hYKd9gpAolXOYf2AwWROX45yxvv6m8g",
+        "content-length": "0",
+        "host": "nfxoj776ra.execute-api.us-east-2.amazonaws.com",
+        "origin": "http://localhost:8080",
+        "referer": "http://localhost:8080/",
+        "sec-ch-ua": "\"Chromium\";v=\"94\", \"Google Chrome\";v=\"94\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "cross-site",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36",
+        "x-amzn-trace-id": "Root=1-61524841-2a68f3e61f057be908d5a128",
+        "x-forwarded-for": "72.89.78.34",
+        "x-forwarded-port": "443",
+        "x-forwarded-proto": "https"
+    },
+    "requestContext": {
+        "accountId": "075549724530",
+        "apiId": "nfxoj776ra",
+        "authorizer": {
+            "jwt": {
+                "claims": {
+                    "at_hash": "ul-D65tGXk1FOu2-ji_PNw",
+                    "aud": "37p0rso5u19lhii15m7m1ls4ne",
+                    "auth_time": "1632782400",
+                    "cognito:username": "bobbylite",
+                    "email": "bobby.luisi@gmail.com",
+                    "email_verified": "true",
+                    "event_id": "b856cf7b-1a62-493d-8af1-0208ee69998d",
+                    "exp": "1632786000",
+                    "iat": "1632782401",
+                    "iss": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_jsBiA2Oeu",
+                    "jti": "7dd80fd2-e16b-436e-8696-5ab483160f0a",
+                    "sub": "850c6076-e60a-4adf-922f-1956df1601b9",
+                    "token_use": "id"
+                },
+                "scopes": null
+            }
+        },
+        "domainName": "nfxoj776ra.execute-api.us-east-2.amazonaws.com",
+        "domainPrefix": "nfxoj776ra",
+        "http": {
+            "method": "GET",
+            "path": "/tweets",
+            "protocol": "HTTP/1.1",
+            "sourceIp": "72.89.78.34",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36"
+        },
+        "requestId": "GWA6PiiGCYcEMPg=",
+        "routeKey": "GET /tweets",
+        "stage": "$default",
+        "time": "27/Sep/2021:22:40:01 +0000",
+        "timeEpoch": 1632782401311
+    },
+    "isBase64Encoded": false
+}

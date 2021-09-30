@@ -1,0 +1,10 @@
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\realmikefacts-dynamo-endpoint.dll
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\realmikefacts-dynamo-endpoint.deps.json
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\realmikefacts-dynamo-endpoint.runtimeconfig.json
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\realmikefacts-dynamo-endpoint.pdb
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\Amazon.Lambda.APIGatewayEvents.dll
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\Amazon.Lambda.Core.dll
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\Amazon.Lambda.Serialization.SystemTextJson.dll
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\AWSSDK.Core.dll
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\AWSSDK.DynamoDBv2.dll
+D:\Source\Repo\realmikefacts-dynamo-endpoint\realmikefacts-dynamo-endpoint\bin\Release\netcoreapp3.1\publish\Newtonsoft.Json.dll
