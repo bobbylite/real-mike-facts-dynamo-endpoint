@@ -100,11 +100,10 @@ namespace realmikefacts_dynamo_endpoint
                             var cookie = new Cookie("JWT", deserializedPostRequestItems.JwtToken)
                             {
                                 HttpOnly = true,
-                                Expires = DateTime.Now.AddMinutes(15),
+                                Expires = DateTime.Now.AddDays(1),
                                 Expired = false
                             };
-                            var tomorrowsDate = DateTime.Now.AddDays(1);
-                            var stringCookie = $"{cookie}; HttpOnly; Expires={tomorrowsDate.ToString()}; secure; SameSite=Lax;";
+                            var serializedCookie = $"{cookie}; HttpOnly; Expires={cookie.Expires}; secure; SameSite=Lax;";
                             var response =  new RealMikeFactsHttpResponse
                             {
                                 StatusCode = ApiStatusCode.OK,
@@ -112,8 +111,9 @@ namespace realmikefacts_dynamo_endpoint
                                 Headers = responseHeaders
                             };
 
-                            response.SetHeaderValues("Set-Cookie", stringCookie, true);
+                            response.SetHeaderValues("Set-Cookie", serializedCookie, true);
                             response.SetHeaderValues("access-control-expose-headers", "Set-Cookie", true);
+                            response.SetHeaderValues("Access-Control-Allow-Headers", "Set-Cookie", true);
                             response.SetHeaderValues("Access-Control-Allow-Credentials", "true", true);
                             response.SetHeaderValues("Access-Control-Allow-Origin", "https://api.realmikefacts.com", true);
                             response.SetHeaderValues("Access-Control-Allow-Headers", "Set-Cookie", true);
