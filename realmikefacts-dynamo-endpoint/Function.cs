@@ -11,6 +11,7 @@ using Amazon.Lambda.APIGatewayEvents;
 using Amazon.DynamoDBv2;
 using Newtonsoft.Json;
 using Amazon.DynamoDBv2.Model;
+using System.Net;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -36,13 +37,26 @@ namespace realmikefacts_dynamo_endpoint
                 switch (request?.RouteKey)
                 {
                     case RouteKeyManager.Options:
-                        return new RealMikeFactsHttpResponse
+                        var optionsResponse = new RealMikeFactsHttpResponse
                         {
                             StatusCode = ApiStatusCode.OK,
                             Headers = responseHeaders
                         };
-                    
+
+                        return optionsResponse;
+
                     case RouteKeyManager.Get:
+                        var cookiesFound = request.Headers.Keys;
+                        if (true)
+                        {
+                            return new RealMikeFactsHttpResponse
+                            {
+                                StatusCode = ApiStatusCode.OK,
+                                Body = JsonConvert.SerializeObject(request),
+                                Headers = responseHeaders
+                            };
+                        }
+                            
                         return new RealMikeFactsHttpResponse
                         {
                             StatusCode = ApiStatusCode.OK,
@@ -56,14 +70,60 @@ namespace realmikefacts_dynamo_endpoint
 
                     case RouteKeyManager.Put:
                         var deserializedRequestItems = JsonConvert.DeserializeObject<RequestBodyDeserialized>(request?.Body);
+
+                        if (deserializedRequestItems == null)
+                            throw new NullReferenceException("Post Request Server Error");
+
+                        var putTweetText = deserializedRequestItems.TweetText;
+                        var putTweetId = deserializedRequestItems.TweetId.ToString();
+                        var putPk = deserializedRequestItems.RealMikeFacts;
+
                         return new RealMikeFactsHttpResponse
                         {
                             StatusCode = ApiStatusCode.OK,
                             Body = JsonConvert.SerializeObject(
                                 new ApiBody
                                 {
-                                    Message = await MessageForPutRequest(deserializedRequestItems.TweetText, deserializedRequestItems.TweetId.ToString(), deserializedRequestItems.RealMikeFacts)
+                                    Message = await MessageForPutRequest(putTweetText, putTweetId, putPk)
                                 }),
+                            Headers = responseHeaders
+                        };
+
+                    case RouteKeyManager.Post:
+                        var deserializedPostRequestItems = JsonConvert.DeserializeObject<PostRequestDeserialized>(request?.Body);
+
+                        if (deserializedPostRequestItems == null)
+                            throw new NullReferenceException("Post Request Server Error");
+
+                        if (true)
+                        {
+                            var cookie = new Cookie("JWT", deserializedPostRequestItems.JwtToken)
+                            {
+                                HttpOnly = true,
+                                Expires = DateTime.Now.AddMinutes(15),
+                                Expired = false
+                            };
+                            var tomorrowsDate = DateTime.Now.AddDays(1);
+                            var stringCookie = $"{cookie}; HttpOnly; Expires={tomorrowsDate.ToString()}; secure; SameSite=Lax;";
+                            var response =  new RealMikeFactsHttpResponse
+                            {
+                                StatusCode = ApiStatusCode.OK,
+                                Body = JsonConvert.SerializeObject(request),
+                                Headers = responseHeaders
+                            };
+
+                            response.SetHeaderValues("Set-Cookie", stringCookie, true);
+                            response.SetHeaderValues("access-control-expose-headers", "Set-Cookie", true);
+                            response.SetHeaderValues("Access-Control-Allow-Credentials", "true", true);
+                            response.SetHeaderValues("Access-Control-Allow-Origin", "https://api.realmikefacts.com", true);
+                            response.SetHeaderValues("Access-Control-Allow-Headers", "Set-Cookie", true);
+
+                            return response;
+                        }
+
+                        return new RealMikeFactsHttpResponse
+                        {
+                            StatusCode = ApiStatusCode.BAD,
                             Headers = responseHeaders
                         };
 
@@ -81,7 +141,7 @@ namespace realmikefacts_dynamo_endpoint
                 LambdaLogger.Log($"EXCEPTION: {e.Message}");
                 return new RealMikeFactsHttpResponse
                 {
-                    StatusCode = ApiStatusCode.OK,
+                    StatusCode = ApiStatusCode.BAD,
                     Body = JsonConvert.SerializeObject(e),
                     Headers = responseHeaders
                 };
@@ -149,6 +209,19 @@ namespace realmikefacts_dynamo_endpoint
                 IsDeleted = "false"
             });
 
+            return dynamoResponseObject;
+        }
+
+        private async Task<DynamoResonseObject> MessageForPostRequest()
+        {
+            var dynamoResponseObject = new DynamoResonseObject();
+            dynamoResponseObject.TableItems.Add(new DynamoRealMikeFactsItem()
+            {
+                TweetId = string.Empty,
+                TweetText = string.Empty,
+                RealMikeFacts = string.Empty,
+                IsDeleted = "false"
+            });
             return dynamoResponseObject;
         }
     }
